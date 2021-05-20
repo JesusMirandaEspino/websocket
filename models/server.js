@@ -23,6 +23,11 @@ constructor(){
     this.middlewares();
 
     this.routes();
+
+
+    //sockets
+    this.sockets();
+
 }
 
 
@@ -41,6 +46,18 @@ routes(){
 
     //this.app.use(   this.paths.auth,        require('../routes/auth') );
 
+}
+
+
+sockets(){
+    this.io.on(  'connection', socket => {
+        console.log('cliente conectado', socket.id );
+
+        socket.on( 'disconnect', () => {
+            console.log( 'cliente desconectado', socket.id  );
+        } );
+
+    } );
 }
 
 
