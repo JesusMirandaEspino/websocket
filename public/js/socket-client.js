@@ -22,6 +22,11 @@ socket.on( 'disconnect', () => {
     online.style.display = 'none';
 } );
 
+
+socket.on( 'enviar-mensaje',  () => {
+    console.log('!!!!!!!');
+} );
+
 console.log( enviar );
 
 enviar.addEventListener( 'click',  () => {
