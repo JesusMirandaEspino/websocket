@@ -1,5 +1,6 @@
 const express = require( 'express' );
 const cors = require('cors')
+const { socketController } = require('../sockets/controller')
 
 
 
@@ -51,20 +52,7 @@ routes(){
 
 sockets(){
 
-        this.io.on(  'connection', socket => {
-        console.log('cliente conectado', socket.id );
-
-        socket.on( 'disconnect', () => {
-            console.log( 'cliente desconectado', socket.id  );
-        } );
-
-        socket.on( 'enviar-mensaje', ( payload, callback ) => {
-            // this.io.emit('enviar-mensaje', payload );
-            const id = 1234;
-            callback( id );
-        } );
-
-    } );
+        this.io.on(  'connection', socketController );
 }
 
 
