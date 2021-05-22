@@ -58,8 +58,10 @@ sockets(){
             console.log( 'cliente desconectado', socket.id  );
         } );
 
-        socket.on( 'enviar-mensaje', ( payload ) => {
-            this.io.emit('enviar-mensaje', payload);
+        socket.on( 'enviar-mensaje', ( payload, callback ) => {
+            // this.io.emit('enviar-mensaje', payload );
+            const id = 1234;
+            callback( id );
         } );
 
     } );
